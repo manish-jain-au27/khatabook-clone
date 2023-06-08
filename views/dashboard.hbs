@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Khatabook Clone</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="form1" style="margin-left: 700px; margin-top: 200px;">
+  <h1>Khatabook Clone - {{ledger.name}} Ledger</h1>
+  <form  action="/ledger/{{ledger._id}}/transactions" method="POST">
+    <input type="text" name="title" placeholder="Transaction title" required style="line-height: 30px;"><br/><br/>
+    <input type="number" name="amount" placeholder="Amount" required style="line-height: 30px;"><br/><br/>
+    <select name="type" required style="line-height: 30px;"><br/><br/>
+      <option value="credit" style="line-height: 30px;">Credit</option>
+      <option value="debit" style="line-height: 30px;">Debit</option>
+    </select><br/><br/>
+    <input type="text" name="mobile" placeholder="Mobile Number" required style="line-height: 30px;"><br/><br/>
+    <button type="submit" style="width: 200px;height:50px;">Add Transaction</button><br/><br/>
+  </form>
+  </div>
+  <div class="heading" style="margin-left: 700px;">
+  <h2>Pending Amount: {{balance}}</h2>
+  <h3 style="margin-left: 50px;">Transactions</h3>
+  </div>
+  <div class="table" style="margin-top: 100px; margin-left: 500px;">
+  
+  <table>
+    <thead>
+      <tr >
+        <th style="border:2px solid black; width:80px; background-color:grey;font-size:22px;">Title</th>
+        <th style="border:2px solid black; width:80px;background-color:grey;font-size:22px;">Amount</th>
+        <th style="border:2px solid black; width:80px;background-color:grey;font-size:22px;">Type</th>
+        <th style="border:2px solid black; width:200px;background-color:grey;font-size:22px;">Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each transactions}}
+      <tr>
+        <td style="text-align: center; border:2px solid black;background-color:lightgrey; font-size:20px;">{{title}}</td>
+        <td style="text-align: center; border:2px solid black;background-color:lightgrey;font-size:20px;">{{amount}}</td>
+        <td style="text-align: center; border:2px solid black;background-color:lightgrey;font-size:20px;">{{type}}</td>
+        <td style="text-align: center; border:2px solid black;background-color:lightgrey;font-size:20px;">{{timestamp}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h2>Total Balance: {{balance}}</h2>
+  </div>
+</body>
+</html>
